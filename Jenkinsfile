@@ -72,24 +72,24 @@ pipeline {
             }
         }
 
-        // stage('Deploy'){
-        //  //   /* when{
-        //  //       expression{
-        //  //           params.deploy
-        //  //       }
-        //  //   } */
-        //     steps{
-        //         echo 'Hi, this is triggering CD job stage'
-        //         script{
-        //             def params = [
-        //                 string(name: 'appVersion', value: "${appVersion}")
-        //             ]
-        //             build job: 'frontend-deploy', parameters: params, wait: false
-        //             // since the build job is in the same folder so we mentioned module name directly, if it is in different folder then we need to mention the folder path like: 'com/xyz/featurename'
-        //             // name given in jenkins server: "frontend-deploy"
-        //         }
-        //     }
-        // }
+        stage('Deploy'){
+         //   /* when{
+         //       expression{
+         //           params.deploy
+         //       }
+         //   } */
+            steps{
+                echo 'Hi, this is triggering CD job stage'
+                script{
+                    def params = [
+                        string(name: 'appVersion', value: "${appVersion}")
+                    ]
+                    build job: 'frontend-deploy', parameters: params, wait: false
+                    // since the build job is in the same folder so we mentioned module name directly, if it is in different folder then we need to mention the folder path like: 'com/xyz/featurename'
+                    // name given in jenkins server: "frontend-deploy"
+                }
+            }
+        }
 
     }
 
